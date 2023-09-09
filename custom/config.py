@@ -29,7 +29,7 @@ SYNTH_WORDS = DATA_DIR / "synthentic_words.txt"
 font_cfg = dict(
     font_dir=FONT_DIR,
     font_list_file=FONT_LIST_FILE,
-    font_size=(25, 31),
+    font_size=(25, 35),
 )
 
 perspective_transform = NormPerspectiveTransformCfg(20, 20, 1.5)
@@ -133,7 +133,7 @@ def dropout_horizontal(num_image):
         num_image=num_image,
     )
     cfg.render_cfg.corpus_effects = Effects(
-        DropoutHorizontal(p=1, num_line=2, thickness=1)
+        DropoutHorizontal(p=1, num_line=3, thickness=1)
     )
     return cfg
 
@@ -226,24 +226,24 @@ def extra_text_line_layout(num_image):
     return cfg
 
 
-num_images = {
-    "curve": 20000,
-    "compact_char_spacing_small": 30000,
-    "compact_char_spacing_large": 30000,
-    "dropout_horizontal": 50000,
-    "dropout_vertical": 50000,
-    "extra_text_line_layout": 100000,
-    "line": 20000,
-}
 # num_images = {
-#     "curve": 2,
-#     "compact_char_spacing_small": 2,
-#     "compact_char_spacing_large": 2,
-#     "dropout_horizontal": 2,
-#     "dropout_vertical": 2,
-#     "extra_text_line_layout": 2,
-#     "line": 2,
+#     "curve": 20000,
+#     "compact_char_spacing_small": 15000,
+#     "compact_char_spacing_large": 15000,
+#     "dropout_horizontal": 30000,
+#     "dropout_vertical": 30000,
+#     "extra_text_line_layout": 100000,
+#     "line": 10000,
 # }
+num_images = {
+    "curve": 2,
+    "compact_char_spacing_small": 2,
+    "compact_char_spacing_large": 2,
+    "dropout_horizontal": 2,
+    "dropout_vertical": 2,
+    "extra_text_line_layout": 2,
+    "line": 2,
+}
 
 
 configs = [
