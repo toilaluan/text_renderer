@@ -29,10 +29,15 @@ SYNTH_WORDS = DATA_DIR / "synthentic_words.txt"
 font_cfg = dict(
     font_dir=FONT_DIR,
     font_list_file=FONT_LIST_FILE,
-    font_size=(25, 35),
+    font_size=(20, 40),
+)
+small_font_cfg = dict(
+    font_dir=FONT_DIR,
+    font_list_file=FONT_LIST_FILE,
+    font_size=(20, 25),
 )
 
-perspective_transform = NormPerspectiveTransformCfg(20, 20, 1.5)
+perspective_transform = NormPerspectiveTransformCfg(10, 5, 1.5)
 
 
 def base_cfg(
@@ -92,6 +97,33 @@ def compact_char_spacing_large(num_image):
         num_image=num_image,
     )
     cfg.render_cfg.corpus.cfg.char_spacing = 0.3
+    return cfg
+
+
+def same_line_layout_different_font_size(num_image):
+    cfg = base_cfg(
+        inspect.currentframe().f_code.co_name,
+        corpus=[
+            WordCorpus(
+                WordCorpusCfg(
+                    text_paths=[SYNTH_WORDS],
+                    separator="\n",
+                    num_word=(1, 1),
+                    **font_cfg,
+                ),
+            ),
+            WordCorpus(
+                WordCorpusCfg(
+                    text_paths=[SYNTH_WORDS],
+                    separator="\n",
+                    num_word=(1, 1),
+                    **small_font_cfg,
+                ),
+            ),
+        ],
+        num_image=num_image,
+    )
+    cfg.render_cfg.layout = SameLineLayout(h_spacing=(0.2, 0.3))
     return cfg
 
 
@@ -243,15 +275,19 @@ num_images = {
     "dropout_vertical": 2,
     "extra_text_line_layout": 2,
     "line": 2,
+    "same_line_layout_different_font_size": 2,
 }
 
 
 configs = [
-    curve(num_images["curve"]),
-    compact_char_spacing_small(num_images["compact_char_spacing_small"]),
-    compact_char_spacing_large(num_images["compact_char_spacing_large"]),
-    dropout_horizontal(num_images["dropout_horizontal"]),
-    dropout_vertical(num_images["dropout_vertical"]),
-    extra_text_line_layout(num_images["extra_text_line_layout"]),
-    *line(num_images["line"]),
+    same_line_layout_different_font_size(
+        num_images["same_line_layout_different_font_size"]
+    ),
+    # curve(num_images["curve"]),
+    # compact_char_spacing_small(num_images["compact_char_spacing_small"]),
+    # compact_char_spacing_large(num_images["compact_char_spacing_large"]),
+    # dropout_horizontal(num_images["dropout_horizontal"]),
+    # dropout_vertical(num_images["dropout_vertical"]),
+    # extra_text_line_layout(num_images["extra_text_line_layout"]),
+    # *line(num_images["line"]),
 ]
