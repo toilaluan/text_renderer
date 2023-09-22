@@ -1,6 +1,6 @@
 internet_word_path = "Viet74K.txt"
 all_vietnamese_words = "all-vietnamese-syllables.txt"
-train_annotation_file = "/home/luantranthanh/hust/ocr/dataset/train_gt.txt"
+train_annotation_file = "../../train_gt.txt"
 
 import random
 

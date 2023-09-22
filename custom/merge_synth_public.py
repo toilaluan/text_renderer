@@ -2,8 +2,10 @@ from glob import glob
 import os
 import shutil
 
-public_img_dir = "/home/luantranthanh/hust/ocr/dataset/new_train"
-public_train_annotation_file = "/home/luantranthanh/hust/ocr/dataset/train.txt"
+public_img_dir = "../../new_train"
+public_img_dir = os.path.abspath(public_img_dir)
+
+public_train_annotation_file = "../../train.txt"
 public_synthentic_folder_dir = "output/new_train"
 shutil.rmtree(public_synthentic_folder_dir, ignore_errors=True)
 os.makedirs(public_synthentic_folder_dir, exist_ok=True)
@@ -22,6 +24,6 @@ with open("new_train_annotation.txt", "w") as f:
         line = line.replace(" ", "\t")
         img_name, label = line.split("\t")
         f.write(public_synthentic_folder_dir + "/" + img_name + "\t" + label + "\n")
-open("synth_public_annotation.txt", "w").close()
-os.system("cat new_train_annotation.txt >> synth_public_annotation.txt")
-os.system("cat synthentic_annotations.txt >> synth_public_annotation.txt")
+open("synth_public_train.txt", "w").close()
+os.system("cat new_train_annotation.txt >> synth_public_train.txt")
+os.system("cat synthentic_annotations.txt >> synth_public_train.txt")

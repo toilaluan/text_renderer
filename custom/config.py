@@ -258,32 +258,29 @@ def extra_text_line_layout(num_image):
     return cfg
 
 
-# num_images = {
-#     "curve": 20000,
-#     "compact_char_spacing_small": 15000,
-#     "compact_char_spacing_large": 15000,
-#     "dropout_horizontal": 30000,
-#     "dropout_vertical": 30000,
-#     "extra_text_line_layout": 100000,
-#     "line": 10000,
-# }
 num_images = {
-    "curve": 2,
-    "compact_char_spacing_small": 2,
-    "compact_char_spacing_large": 2,
-    "dropout_horizontal": 2,
-    "dropout_vertical": 2,
-    "extra_text_line_layout": 2,
-    "line": 2,
-    "same_line_layout_different_font_size": 2,
+    "curve": 20000,
+    "compact_char_spacing_small": 15000,
+    "compact_char_spacing_large": 15000,
+    "dropout_horizontal": 30000,
+    "dropout_vertical": 30000,
+    "extra_text_line_layout": 100000,
+    "line": 10000,
 }
+# num_images = {
+#     "curve": 2,
+#     "compact_char_spacing_small": 2,
+#     "compact_char_spacing_large": 2,
+#     "dropout_horizontal": 2,
+#     "dropout_vertical": 2,
+#     "extra_text_line_layout": 2,
+#     "line": 2,
+#     "same_line_layout_different_font_size": 2,
+# }
 
 
 configs = [
-    same_line_layout_different_font_size(
-        num_images["same_line_layout_different_font_size"]
-    ),
-    # curve(num_images["curve"]),
+    curve(num_images["curve"]),
     # compact_char_spacing_small(num_images["compact_char_spacing_small"]),
     # compact_char_spacing_large(num_images["compact_char_spacing_large"]),
     # dropout_horizontal(num_images["dropout_horizontal"]),
