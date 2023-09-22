@@ -5,5 +5,5 @@ python3 main.py --config pretrain_data/config.py \
     --num_processes 2 \
     --log_period 10
 cd pretrain_data
-python create_annotation.py
-python merge_synth_public.py
+python3 create_annotation.py
+python3 merge_synth_public.py
